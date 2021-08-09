@@ -1,0 +1,152 @@
+.contenedor{
+    background: url(../imagenes/piso.png) left bottom repeat-x,
+    url(../imagenes/nubes.png) left top repeat-x ;
+    background-color: #a4d3ff;
+    height: 550px;
+    width: 1200px;
+    border: 5px solid rgb(16, 196, 31);
+    margin: auto;
+    padding: 0px;
+    text-align: center;
+}
+#contenedornvl1{
+    background: url(../imagenes/piso.png) left bottom repeat-x,
+    url(../imagenes/fondonaruto.jpg) no-repeat center/100%;
+    height: 550px;
+    width: 1200px;
+    background-color: rgb(194, 175, 71);
+    border: 5px solid rgb(16, 196, 31);
+    margin: auto;
+    padding: 0px;
+    justify-content: center;
+
+}
+.contenedornvl2{
+    background: url(../imagenes/piso.png) left bottom repeat-x,
+    url(../imagenes/namek.png) center no-repeat ;
+    height: 550px;
+    width: 1200px;
+    background-color: rgb(194, 175, 71);
+    border: 5px solid rgb(16, 196, 31);
+    margin: auto;
+    padding: 0px;
+    justify-content: center;
+}
+.contenedornvl3{
+    background: url(../imagenes/piso.png) left bottom repeat-x,
+    url(../imagenes/fondomario.jpg) center no-repeat ;
+    height: 550px;
+    width: 1200px;
+    background-color: rgb(194, 175, 71);
+    border: 5px solid rgb(16, 196, 31);
+    margin: auto;
+    padding: 0px;
+    justify-content: center;
+}
+.contenedornvl4{
+    background: url(../imagenes/piso.png) left bottom repeat-x,
+    url(../imagenes/fondo\ pokemon.png) center no-repeat ;
+    height: 550px;
+    width: 1200px;
+    background-color: rgb(194, 175, 71);
+    border: 5px solid rgb(16, 196, 31);
+    margin: auto;
+    padding: 0px;
+    justify-content: center;
+}
+.contenedornvl5{
+    background: url(../imagenes/piso.png) left bottom repeat-x,
+    url(../imagenes/fondopug2.jpg) no-repeat center/100%;
+    height: 550px;
+    width: 1200px;
+    background-color: rgb(194, 175, 71);
+    border: 5px solid rgb(16, 196, 31);
+    margin: auto;
+    padding: 0px;
+    justify-content: center;
+}
+
+.contenedorini{
+    background-color: #a4d3ff;
+    height: 650px;
+    width: 1500px;
+    border: 5px solid rgb(16, 196, 31);
+    margin: auto;
+    padding: 0px;
+    text-align: center;
+    font-size:xx-large;
+    font-family: "Comic Sans MS", "Comic Sans", cursive;
+
+}
+button{
+    margin-top: 40px;
+    background-color:rgb(166, 87, 202);
+    font-family: "Comic Sans MS", "Comic Sans", cursive;
+    font-size: 40px;
+    
+}
+.titulo{
+    background-color: rgb(166, 87, 202);
+    padding: auto;
+    text-align: center;
+    font-size: 40px;
+    font-family: "Comic Sans MS", "Comic Sans", cursive;
+    color: turquoise;
+}
+.home{
+    margin: 0%;
+    align-items: center;
+    text-align: center;
+    background-color:rgb(44, 196, 14);
+}
+
+button:hover{
+    background-color:rgb(138, 14, 196);
+}
+#nivel{
+    font-family: "Comic Sans MS", "Comic Sans", cursive;
+    font-size: 40px;
+    text-align: center;     
+}
+#tiempo, #tiempo2, #tiempo3, #tiempo4, #tiempo5{
+    font-family: "Comic Sans MS", "Comic Sans", cursive;
+    font-size: 20px;
+    text-align: center;  
+    margin-top: 15px;
+}
+#goku{    
+    height: 300px;
+    position: relative;
+    top: 280px;
+}
+#mario{
+    height: 500px;
+    position: relative;
+    top: 220px;
+}
+#naruto{
+    position: relative;
+    top: 190px;
+}
+#pikachu{
+    position: relative;
+    top: 320px;
+}
+#pug{
+    position: relative;
+    top: 315px;
+}
+
+#quad{
+    margin-right: 0px;
+}
+.score{
+    height: 63px;
+    background-color: cadetblue;
+    border: 5px solid;
+    border-color: blue;
+    width: 1200px;
+    margin: auto;
+    display: flex;
+    justify-content: space-between;
+}

@@ -1,0 +1,271 @@
+<!DOCTYPE HTML>
+<html lang="es">
+<head>
+    <meta charset="utf-8"/>
+    <title>Nivel 5</title>
+    <script src="https://kit.fontawesome.com/2c36e9b7b1.js" crossorigin="anonymous"></script>  
+    <style type="text/css">
+
+        #imagen{
+            position:relative;
+            display:block;
+            z-index: 1;   
+            
+        }
+        #menos{
+            position: absolute;
+            display:block;
+            width: 150px;
+            height: 150px;
+            z-index: 1;
+        }
+        #powerup{
+            position: absolute;
+            display:block;
+            width: 170px;
+            height: 200px; 
+            z-index: 1;          
+        }
+        #perder{
+            animation-name: anim;
+            animation-duration: 5s;
+            animation-iteration-count: infinite;
+            display: none;
+            text-align: center;
+            color: brown;
+            font-size: 150px;
+        }
+        #continuar{
+            text-align: center;
+            color: rgb(14, 36, 77);
+            font-size: 75px;
+        }
+ 
+        #lienzo{
+            background: url(../imagenes/fondopug2.jpg) no-repeat center/100%;
+            width:100%;
+            height: 600px;
+            border:5px solid gray;
+            box-shadow:0px 0px 20px gray inset;
+            /*border-radius:20px; bordes circulares*/
+            overflow: hidden;
+            padding-left: 0;
+            padding-right: 0;
+            padding-bottom: 0;
+            z-index: -1;
+        }
+        .score{
+            padding-left: 0;
+            padding-right: 0;
+            padding-bottom: 0;
+            height: 63px;
+            background-color: cadetblue;
+            border: 5px solid; 
+            border-color: blue;
+            /*border-radius: 20px;bordes circulares*/
+            width: 100%;            
+            display: flex;
+            justify-content: space-between;        
+        }
+        #nivel{
+            font-family: "Comic Sans MS", "Comic Sans", cursive;
+            font-size: 40px;
+            text-align: center;     
+        }        
+        .home{
+            margin: 0%;
+            align-items: center;
+            text-align: center;
+            background-color:rgb(27, 107, 87);
+        }
+        #continuar:hover{
+            color: cornflowerblue;
+        }
+        button:hover{
+            background-color:rgb(80, 199, 50);
+        }
+        button{
+            margin-top: 40px;
+            background-color:rgb(166, 87, 202);
+            font-family: "Comic Sans MS", "Comic Sans", cursive;
+            font-size: 40px;    
+        }           
+ /*Animaciones CSS*/
+        .gira{
+            -moz-animation:rotar 700ms infinite linear;
+            -webkit-animation:rotar 700ms infinite linear;
+        }
+        @-moz-keyframes rotar{
+            from{-moz-transform:rotate(0deg);}
+            to{-moz-transform:rotate(360deg);}
+        }
+        @-webkit-keyframes rotar{
+            from{-webkit-transform:rotate(0deg);}
+            to{-webkit-transform:rotate(360deg);}
+        }
+        @keyframes anim{
+        0% {color: #ff0;} /*Amarillo*/
+        25% {color: #f80;} /*Naranja*/
+        50% {color: rgb(216, 16, 16);} /*Negro*/
+        75% {color: #f80;} /*Otra vez naranja*/
+        100% {color: #ff0;} /*Otra vez amarillo*/
+        }
+        #contenedornvl1{        
+            height: 550px;
+            width: 1200px;
+            background-color: rgb(194, 175, 71);
+            border: 5px solid rgb(16, 196, 31);
+            margin: auto;
+            padding: 0px;
+            justify-content: center;
+        }
+        #tiempo, #clic{
+            font-family: "Comic Sans MS", "Comic Sans", cursive;
+            font-size: 20px;
+            text-align: center;  
+            margin:0%;
+        }    
+    </style>
+    <script type="text/javascript">
+ 
+        //Definimos las variables:
+        var y=0;          
+        var x=0;
+        
+        var controlY=1; 
+        var controlX=1; 
+        var velocidad=10;
+ 
+        // Cada 6 mili-segundos se va a ejecutar la función mover que comprueba
+                // las colisiones de la pelota
+        var intervalo=setInterval("mover()",6);
+        
+        //var intervalo=setInterval("movervirus()",6);
+        
+        function mover(){
+            //Eje Y
+            if(controlY==1){
+                y+=velocidad;                
+            }else{        
+                y-=velocidad;                
+            }
+            if(y<=0){
+                controlY=1;
+                y=0;
+            }else if(y>=document.getElementById("lienzo").offsetHeight-100){
+// Esto significa si y es mayor o igual a la altura que tiene el lienzo menos el tamaño de la imagen
+ 
+                                controlY=0;
+                y=document.getElementById("lienzo").offsetHeight-100;
+            }
+            
+ 
+            //Eje X
+            if(controlX==1){
+                x+=velocidad;
+            }else{        
+                x-=velocidad;
+            }
+            if(x<=0){
+                controlX=1;
+                x=0;
+            }else if(x>=document.getElementById("lienzo").offsetWidth-100){
+                controlX=0;
+                x=document.getElementById("lienzo").offsetWidth-100;
+            }
+            document.getElementById("imagen").style.left=String(x)+"px";
+            document.getElementById("imagen").style.top=String(y)+"px";            
+        }
+
+        function girar(){
+            document.getElementById("menos").className="gira";
+        }  
+              
+        window.onload = function(){
+            girar();
+            var virus = document.getElementById("menos");
+            
+            virus.addEventListener("click", restar);
+            function restar(){
+                cont = cont-5;
+                document.getElementById("tiempo").style.color="red";
+                document.getElementById("tiempo").style.backgroundColor="rgb(143, 13, 13)";
+                document.getElementById("tiempo").innerHTML= "Tiempo restante: "+cont;
+            }
+
+            var power = document.getElementById("powerup");
+            power.addEventListener("click", aumenta);
+            function aumenta(){
+                cont = cont + 5;
+                document.getElementById("tiempo").style.color="green";
+                document.getElementById("tiempo").style.backgroundColor="greenyellow";
+                document.getElementById("tiempo").innerHTML = "Tiempo restante: " +cont;
+            }
+            var contclick = document.getElementById("lienzo");
+            contclick = addEventListener("click",contador);
+            aux = 0
+            function contador(){
+                aux++;
+                document.getElementById("clic").innerHTML = "Clicks realizados: " + aux;
+            }
+            var movimiento = setInterval(function(){
+            randx = Math.round(Math.random()*1000);
+            randy = Math.round(Math.random()*200);
+            document.getElementById("menos").style.marginTop = randy + "px";
+            document.getElementById("menos").style.marginLeft = randx + "px";
+            }, 100); 
+            var movimiento2 = setInterval(function(){
+            randx = Math.round(Math.random()*1000);
+            randy = Math.round(Math.random()*200);
+            document.getElementById("powerup").style.marginTop = randy + "px";
+            document.getElementById("powerup").style.marginLeft = randx + "px";
+            }, 1000);      
+        }
+        
+        var cont = 40;             
+        var id = setInterval(function(){
+            if(cont>0){
+            cont--;  
+            document.getElementById("tiempo").style.color="black";
+            document.getElementById("tiempo").style.backgroundColor= "cadetblue";         
+            document.getElementById("tiempo").innerHTML= "Tiempo restante: "+ cont;
+            }                              
+            if(cont == 0) 
+            {
+                clearInterval(id);
+                document.getElementById("imagen").style.display="none";
+                document.getElementById("menos").style.display="none";
+                document.getElementById("powerup").style.display="none";
+                document.getElementById("tiempo").style.color="black";
+                alert("Se acabo!! Perdiste!!");
+            }
+            if(cont<=0){
+                clearInterval(id);
+                document.getElementById("imagen").style.display="none";
+                document.getElementById("menos").style.display="none";
+                document.getElementById("powerup").style.display="none";
+                document.getElementById("tiempo").style.color="black";
+            }
+        }, 1000); 
+        
+    </script>
+</head>
+<body>
+    <div class="score">           
+        <div id="casita">
+            <a href="../html/juego.html"><button class=home><i class="fas fa-home"></i></button></a>
+        </div>            
+        <div id="nivel">Nivel 5</div> 
+        <div id="puntuaciones">
+            <div id="tiempo">Tiempo restante: 40</div> 
+            <div id="clic">Clicks realizados: </div>  
+        </div>                  
+    </div>
+    <div id="lienzo">
+        <a href="../html/final.html" id="imagen"><img src="../imagenes/pug2" width="100px" height="100px" ></a>
+        <img src="../imagenes/covid2" id="menos" >
+        <img src="../imagenes/vacuna2" id="powerup">
+        <div id="perder">¡Game Over!<br><a id="continuar" href="../html/final.html">Haz click aqui para continuar</a></div>
+    </div>           
+</body>
+</html>
